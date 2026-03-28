@@ -53,4 +53,4 @@ Este repositorio está listo para ser desplegado fácilmente y sin costo a trav�
 **Juan Carlos Olmedo**  
 *Líder de Operaciones IT & Analista de Datos*  
 Email: [jolmedo@outlook.com.ar](mailto:jolmedo@outlook.com.ar)  
-LinkedIn: [Ir al perfil de LinkedIn](https://linkedin.com/in/juancarlosolmedo)
+LinkedIn: [Ir al perfil de LinkedIn](https://www.linkedin.com/in/juan-carlos-olmedo-39479968/)
