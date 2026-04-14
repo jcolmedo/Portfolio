@@ -1,0 +1,322 @@
+---
+const proyectos = [
+  {
+    titulo: '"PC Autónoma" - Transición a Teltrabajo',
+    descripcion: 'Liderazgo completo del proyecto de habilitación remota durante la pandemia. Diseño e implementación de procedimientos de configuración autónoma de estaciones de trabajo para más de 500 empleados.',
+    tags: ['Project Mgmt', 'AD', 'VPN', 'Remote Work'],
+    icon: 'fa-desktop'
+  },
+  {
+    titulo: 'Reportes Operativos en Power BI',
+    descripcion: 'Diseño e implementación de tableros interactivos para monitoreo de KPIs operativos en tiempo real. Integración de múltiples fuentes con ETLs automatizados en SSIS.',
+    tags: ['Power BI', 'SQL Server', 'SSIS', 'ETL'],
+    icon: 'fa-chart-pie'
+  },
+  {
+    titulo: 'Automatización de ETL con Web Scraping',
+    descripcion: 'Desarrollo de scripts en C# con Selenium para automatizar la extracción de reportes desde múltiples portales web (login, navegación y descarga de archivos), con integración a un pipeline ETL en SQL Server para su procesamiento posterior.',
+    tags: ['C#', 'Selenium', 'Web Scraping', 'SQL Server', 'Data Integration'],
+    icon: 'fa-robot'
+  },
+  {
+    titulo: 'Suite de Automatización Operativa',
+    descripcion: 'Scripts PowerShell para administración remota masiva sobre AD: instalación/desinstalación de software, tareas programadas y Windows Update. Scripts Python con Selenium para operar portales web internos (alta de equipos, encendido remoto, gestión de usuarios). VBScript en Outlook para cierre remoto de procesos críticos ante incidentes nocturnos, eliminando escalaciones a guardia.',
+    tags: ['PowerShell', 'Python', 'Active Directory', 'Automation', 'Selenium', 'VBScript'],
+    icon: 'fa-cogs'
+  },
+  {
+    titulo: 'Infraestructura de Deployment Masivo',
+    descripcion: 'Implementación y administración de estación de trabajo con SCCM, WDS y MDT. Creación de imágenes base y secuencias de tareas para despliegues de 200+ equipos.',
+    tags: ['SCCM', 'WDS', 'MDT', 'Deployment'],
+    icon: 'fa-server'
+  },
+  {
+    titulo: 'Pipeline de Ingesta Multi-Fuente',
+    descripcion: 'Diseño e implementación de un pipeline de consolidación desde fuentes heterogéneas: archivos CSV/Excel, scraping web con Selenium, emails de Outlook procesados automáticamente con VBScript, bases de datos Access, servidores SQL vinculados y extracción automatizada desde Avaya CMS vía scripting nativo. Datos integrados en SQL Server para reporting en Power BI.',
+    tags: ['SQL Server','VBScript','Outlook Automation','Access','Avaya CMS', 'SSIS'],
+    icon: 'fa-database'
+  }
+];
+---
+
+<section id="proyectos" class="proyectos">
+  <div class="bg-grid"></div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-accent">#</span> Proyectos
+      </h2>
+      <p class="section-subtitle">Historias de éxito donde la tecnología resolvió problemas de negocio reales</p>
+    </div>
+    
+    <div class="projects-grid">
+      {proyectos.map((proy, index) => (
+        <div class="project-card-3d" data-index={index} style={`animation-delay: ${index * 0.1}s`}>
+          <div class="card-glow"></div>
+          <div class="card-shine"></div>
+          <div class="project-icon-wrapper">
+            <i class={`fa-solid ${proy.icon}`}></i>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">{proy.titulo}</h3>
+            <p class="project-description">{proy.descripcion}</p>
+            <div class="project-tags">
+              {proy.tags.map(tag => (
+                <span class="project-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .proyectos {
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .title-accent {
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+  }
+
+  .project-card-3d {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out both;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  [data-theme="light"] .project-card-3d {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .project-card-3d:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+  }
+
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card-3d:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+
+  .project-card-3d:hover .card-shine {
+    left: 100%;
+  }
+
+  .project-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--accent);
+    transition: all 0.3s ease;
+  }
+
+  .project-card-3d:hover .project-icon-wrapper {
+    background: linear-gradient(135deg, var(--accent-tertiary) 0%, var(--accent) 100%);
+    color: var(--primary);
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
+  }
+
+  .project-content {
+    position: relative;
+    z-index: 1;
+    transform: translateZ(20px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .project-card-3d::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.3),
+      transparent,
+      rgba(129, 140, 248, 0.3)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card-3d:hover::before {
+    opacity: 1;
+  }
+
+  .project-card-3d::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .project-card-3d:hover::after {
+    opacity: 1;
+  }
+
+  .project-title {
+    font-size: 1.15rem;
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .project-tag {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--accent-tertiary);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    transition: all 0.2s ease;
+  }
+
+  .project-card-3d:hover .project-tag {
+    background: rgba(34, 211, 238, 0.2);
+    color: var(--accent);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+    .project-card-3d:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll('.project-card-3d');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+</script>

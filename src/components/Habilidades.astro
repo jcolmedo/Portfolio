@@ -1,0 +1,304 @@
+---
+const categorias = [
+  {
+    nombre: 'Liderazgo',
+    icon: 'fa-chess-king',
+    habilidades: ['Gestión de equipos', 'Planificación estratégica', 'Gestión de proyectos']
+  },
+  {
+    nombre: 'Soporte Técnico',
+    icon: 'fa-headset',
+    habilidades: ['SCCM/WDS/MDT', 'Active Directory', 'Hardware/Software']
+  },
+  {
+    nombre: 'Bases de Datos',
+    icon: 'fa-database',
+    habilidades: ['SQL Server 2019', 'SSIS', 'Access']
+  },
+  {
+    nombre: 'Scripting/Automación',
+    icon: 'fa-code',
+    habilidades: ['PowerShell', 'Python', 'VBS/BAT']
+  },
+  {
+    nombre: 'Visualización de Datos',
+    icon: 'fa-chart-simple',
+    habilidades: ['Power BI', 'Excel Avanzado', 'Reporting']
+  },
+  {
+    nombre: 'Desarrollo',
+    icon: 'fa-laptop-code',
+    habilidades: ['C#', 'Selenium', 'Web Scraping']
+  }
+];
+---
+
+<section id="habilidades" class="habilidades">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-accent">&lt;/&gt;</span> Habilidades
+      </h2>
+      <p class="section-subtitle">Stack tecnológico y competencias profesionales</p>
+    </div>
+    
+    <div class="skills-grid">
+      {categorias.map((cat, index) => (
+        <div class="skill-card-3d" data-index={index} style={`animation-delay: ${index * 0.1}s`}>
+          <div class="card-glow"></div>
+          <div class="card-shine"></div>
+          <div class="card-content">
+            <div class="card-header">
+              <div class="skill-icon">
+                <i class={`fa-solid ${cat.icon}`}></i>
+              </div>
+              <h3>{cat.nombre}</h3>
+            </div>
+            <ul class="skill-list">
+              {cat.habilidades.map((skill, i) => (
+                <li style={`transition-delay: ${i * 0.05}s`}>
+                  <span class="skill-bullet"></span>
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .habilidades {
+    background: var(--secondary);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .title-accent {
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card-3d {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideUp 0.6s ease-out both;
+    opacity: 0;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+
+  [data-theme="light"] .skill-card-3d {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .skill-card-3d:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+  }
+
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .skill-card-3d:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+
+  .skill-card-3d:hover .card-shine {
+    left: 100%;
+  }
+
+  .card-content {
+    position: relative;
+    padding: 24px;
+    z-index: 1;
+    transform: translateZ(20px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .skill-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--accent);
+    transition: all 0.3s ease;
+  }
+
+  .skill-card-3d:hover .skill-icon {
+    background: linear-gradient(135deg, var(--accent-tertiary) 0%, var(--accent) 100%);
+    color: var(--primary);
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+
+  .card-header h3 {
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .skill-card-3d::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.3),
+      transparent,
+      rgba(129, 140, 248, 0.3)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .skill-card-3d:hover::before {
+    opacity: 1;
+  }
+
+  .skill-card-3d::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .skill-card-3d:hover::after {
+    opacity: 1;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skill-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+
+  .skill-card-3d:hover .skill-list li {
+    color: var(--text);
+  }
+
+  .skill-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .skill-card-3d:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll('.skill-card-3d');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+</script>

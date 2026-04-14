@@ -1,0 +1,465 @@
+---
+const experiencias = [
+  {
+    empresa: 'Atento Argentina',
+    puesto: 'Líder de Operaciones IT y Automatización',
+    periodo: 'Oct 2023 - Actual',
+    logros: [
+      'Liderazgo técnico y operativo de equipos en dos ciudades',
+      'Administración de parque de 1000 PCs',
+      'Diseño e implementación de automatizaciones (PowerShell, Python, VBS, BAT)',
+      'Control de métricas y desarrollo de reportes para toma de decisiones'
+    ]
+  },
+  {
+    empresa: 'Atento Argentina',
+    puesto: 'Analista de Soporte Técnico SR',
+    periodo: 'Jun 2022 - Oct 2023',
+    logros: [
+      'Mantenimiento avanzado de hardware y software',
+      'Administración y despliegue con SCCM, WDS, MDT, Active Directory'
+    ]
+  },
+  {
+    empresa: 'Atento Argentina',
+    puesto: 'Analista de Datos y Reporting SR',
+    periodo: 'Jul 2021 - Jun 2022',
+    logros: [
+      'Desarrollo y mantenimiento de tableros interactivos en PowerBI',
+      'Administración de bases de datos SQL Server 2019',
+      'Creación de procesos SSIS',
+      'Desarrollo de bots de web scraping con C# y Selenium'
+    ]
+  },
+  {
+    empresa: 'Atento Argentina',
+    puesto: 'Líder de Proyecto "PC Autónoma"',
+    periodo: 'May 2020 - Ene 2021',
+    logros: [
+      'Liderazgo de equipo de 3 especialistas en transición al trabajo remoto',
+      'Coordinación técnica con áreas de Redes y Servidores',
+      'Reportes de avance para gerencias'
+    ]
+  },
+  {
+    empresa: 'Atento Argentina',
+    puesto: 'Supervisor SR de Operaciones',
+    periodo: 'Ene 2012 - Jun 2021',
+    logros: [
+      'Liderazgo de equipos de hasta 27 personas',
+      'Soporte técnico especializado (Software de PC, Smart TV, Smartphones)',
+      'Monitorización de rutinas y medición de KPIs'
+    ]
+  }
+];
+---
+
+<section id="experiencia" class="experiencia">
+  <div class="bg-grid"></div>
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-accent">//</span> Experiencia
+      </h2>
+      <p class="section-subtitle">Mi trayectoria profesional en el sector tecnológico</p>
+    </div>
+    
+    <div class="timeline">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-progress"></div>
+      </div>
+      
+      {experiencias.map((exp, index) => (
+        <div class="timeline-item" data-index={index} style={`--delay: ${index * 0.1}s`}>
+          <div class="timeline-dot-wrapper">
+            <div class="timeline-dot"></div>
+            <div class="timeline-dot-glow"></div>
+          </div>
+          <div class="timeline-card-3d" data-index={index}>
+            <div class="card-glow"></div>
+            <div class="card-shine"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <span class="periodo">{exp.periodo}</span>
+                <span class="empresa-tag">{exp.empresa}</span>
+              </div>
+              <h3 class="puesto">{exp.puesto}</h3>
+              <ul class="logros">
+                {exp.logros.map(logro => (
+                  <li>
+                    <span class="check-icon">
+                      <i class="fa-solid fa-check"></i>
+                    </span>
+                    {logro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experiencia {
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .title-accent {
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+
+  .timeline-track {
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+  }
+
+  .timeline-line {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-secondary));
+    border-radius: 2px;
+    transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 20px var(--accent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 70px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+    animation-delay: var(--delay);
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background: var(--accent);
+  }
+
+  .timeline-item:hover .timeline-dot-glow {
+    opacity: 1;
+    transform: scale(2);
+  }
+
+  .timeline-item:hover .timeline-dot-wrapper::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .timeline-dot-wrapper {
+    position: absolute;
+    left: 11px;
+    top: 32px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-dot-glow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0;
+    transition: all 0.3s ease;
+    filter: blur(10px);
+  }
+
+  /* 3D Card Effect */
+  .timeline-card-3d {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+  }
+
+  [data-theme="light"] .timeline-card-3d {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline-card-3d:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
+  }
+
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .timeline-card-3d:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.03),
+      transparent
+    );
+    transition: left 0.5s ease;
+    pointer-events: none;
+  }
+
+  .timeline-card-3d:hover .card-shine {
+    left: 100%;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 1;
+    transform: translateZ(20px);
+  }
+
+  .timeline-card-3d::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 17px;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(34, 211, 238, 0.3),
+      transparent,
+      rgba(129, 140, 248, 0.3)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .timeline-card-3d:hover::before {
+    opacity: 1;
+  }
+
+  .timeline-card-3d::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .timeline-card-3d:hover::after {
+    opacity: 1;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .periodo {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+  }
+
+  .empresa-tag {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--accent-tertiary);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .puesto {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .logros {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+  }
+
+  .logros li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .check-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 211, 238, 0.1);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 0.7rem;
+    margin-top: 1px;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .timeline-track { left: 12px; }
+    .timeline-item { padding-left: 48px; }
+    .timeline-dot-wrapper { left: 0; }
+    .card-header { flex-direction: column; align-items: flex-start; }
+    .timeline-card-3d:hover {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const cards = document.querySelectorAll('.timeline-card-3d');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  const progress = document.querySelector('.timeline-progress');
+
+  timelineItems.forEach((item, index) => {
+    item.addEventListener('mouseenter', () => {
+      const progressHeight = ((index + 1) / timelineItems.length) * 100;
+      progress.style.height = `${progressHeight}%`;
+    });
+  });
+</script>

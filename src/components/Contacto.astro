@@ -1,0 +1,219 @@
+---
+const email = "jolmedo@outlook.com.ar";
+const ubicacion = "Resistencia, Chaco, Argentina";
+---
+
+<section id="contacto" class="contacto">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-accent">@</span> Contacto
+      </h2>
+      <p class="section-subtitle">¿Necesitas contactarme? Aquí están mis datos</p>
+    </div>
+    
+    <div class="contact-grid">
+      <a href={`mailto:${email}`} class="contact-card">
+        <div class="card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+            <path d="M22 6L12 13L2 6"></path>
+          </svg>
+        </div>
+        <div class="card-info">
+          <span class="card-label">Email</span>
+          <span class="card-value">{email}</span>
+        </div>
+        <div class="card-arrow">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </a>
+      
+      <div class="contact-card">
+        <div class="card-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div class="card-info">
+          <span class="card-label">Ubicación</span>
+          <span class="card-value">{ubicacion}</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-box">
+      <div class="cta-content">
+        <h3>¿Tienes un proyecto en mente?</h3>
+        <p>Estoy siempre abierto a discutir nuevas oportunidades y proyectos interesantes.</p>
+      </div>
+      <a href={`mailto:${email}`} class="btn-cta">
+        <span>Enviar mensaje</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contacto {
+    background: var(--primary);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .title-accent {
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  [data-theme="light"] .contact-card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .contact-card:not(a) {
+    cursor: default;
+  }
+
+  a.contact-card:hover {
+    border-color: rgba(0, 255, 170, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 255, 170, 0.1);
+    border-radius: 10px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .card-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .card-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .card-value {
+    color: var(--text);
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+
+  .card-arrow {
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+  }
+
+  a.contact-card:hover .card-arrow {
+    color: var(--accent);
+    transform: translateX(4px);
+  }
+
+  .cta-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  [data-theme="light"] .cta-box {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .cta-content h3 {
+    font-size: 1.25rem;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .cta-content p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: var(--accent);
+    color: var(--primary);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 255, 170, 0.3);
+  }
+
+  @media (max-width: 640px) {
+    .cta-box {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
