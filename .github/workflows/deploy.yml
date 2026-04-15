@@ -1,10 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Activa este workflow en los pushes a la rama donde tengas el código
+  # Activa este workflow en los pushes a la rama principal
   push:
     branches: [ main ]
-  # Permite ejecutar este workflow manualmente desde la pestaña Actions
+  # Permite ejecutar este workflow manualmente
   workflow_dispatch:
 
 # Permisos necesarios para publicar en GitHub Pages
@@ -22,6 +22,8 @@ jobs:
       
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+        with:
+          package-manager: npm
 
   deploy:
     needs: build
@@ -33,5 +35,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          package-manager: npm
