@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   site: 'https://jcolmedo.github.io',
-  base: '/',
+  base: '/Portfolio',
   integrations: [react()],
   output: 'static',
   build: {
